@@ -1,14 +1,14 @@
 public class Node <E> {
  private E data;
- private Node next,prev;
+ private Node<E> next,prev;
 
- public Node (Integer info, Node nex, Node pre){
+ public Node (E info, Node<E> nex, Node<E> pre){
    data = info;
    next = nex;
    prev = pre;
  }
 
- public Node (Integer info) {
+ public Node (E info) {
    data = info;
  }
 
@@ -22,19 +22,19 @@ public class Node <E> {
    return data;
  }
 
- public Node next () {
+ public Node<E> next () {
    return next;
  }
 
- public Node prev () {
+ public Node<E> prev () {
    return prev;
  }
 
- public void setNext (Node other) {
+ public void setNext (Node<E> other) {
    next = other;
  }
 
- public void setPrev (Node other) {
+ public void setPrev (Node<E> other) {
    prev = other;
  }
 
