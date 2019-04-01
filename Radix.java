@@ -1,9 +1,11 @@
 public class Radix {
   public static void radixsort(int[]data){
-
+    int passes = biggest (data);
+    while (passes >= 0) {
+    }
   }
 
-  private static int biggest (int[] data) { //look through list to find how many digits in the greatest number
+  private static int biggest (int[] data) { //look through list to find how many digits in the number with greatest magnitude
     int m = data[0];
     for (int i = 1; i < data.length; i ++) {
       if (Math.abs (data[i]) > Math.abs (m)) {
