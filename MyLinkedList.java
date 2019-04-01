@@ -2,18 +2,71 @@ import java.util.*;
 import java.io.*;
 
 public class MyLinkedList<E> {
+  class Node {
+   private E data;
+   private Node next,prev;
+
+   public Node (E info, Node nex, Node pre){
+     data = info;
+     next = nex;
+     prev = pre;
+   }
+
+   public Node (E info) {
+     data = info;
+   }
+
+   public Node () {
+     data = null;
+     next = null;
+     prev = null;
+   }
+
+   public E getData () {
+     return data;
+   }
+
+   public Node next () {
+     return next;
+   }
+
+   public Node prev () {
+     return prev;
+   }
+
+   public void setNext (Node other) {
+     next = other;
+   }
+
+   public void setPrev (Node other) {
+     prev = other;
+   }
+
+   public E setData (E num) {
+     E old = data;
+     data = num;
+     return old;
+   }
+
+   public String toString () {
+     if (data == null) {
+       return "";
+     }
+     return data + " ";
+   }
+  }
   private int size;
-  private Node<E> start,end;
+  private Node start,end;
 
   public MyLinkedList () {
     size = 0;
-    start = new Node<> ();
-    end = new Node<> ();
+    start = new Node ();
+    end = new Node ();
   }
 
   public String toString(){
     String ans = "[ ";
-    Node <E> rn = start;
+    Node rn = start;
     while (rn != null) {
       ans += rn.toString ();
       rn = rn.next ();
@@ -28,9 +81,9 @@ public class MyLinkedList<E> {
   }
 
   public boolean add(E adding) {
-    Node<E> a = new Node<E> (adding);
+    Node a = new Node (adding);
     end = a;
-    size ++; 
+    size ++;
     return true;
   }
 
