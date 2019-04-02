@@ -7,10 +7,12 @@ public class Radix {
     MyLinkedList<Integer>[] buckets = new MyLinkedList [20];
     //MyLinkedList<Integer> temp = convert (data);
     while (i < passes) {
+      int place = (int) Math.pow (10,i);
       //digit is the number % 10 ^ i
       for (int x = 0; x < data.length; x ++) {
         if (data[x] >= 0) {
-          int digit = (int) (data[x] / (Math.pow (10,i)));
+          int digit = data[x] / place % 10;
+          buckets[digit + 10].add (data[x]);
         }
         else {
         }
