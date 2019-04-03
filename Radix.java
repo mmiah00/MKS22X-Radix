@@ -78,6 +78,14 @@ public class Radix {
     return (int) (Math.log10 (Math.abs (m)) + 1);
   }
 
+  private static String toString (int[] data) {
+    String ans = "[";
+    for (int x = 0; x < data.length; x ++) {
+      ans += data[x] +" ";
+    }
+    return ans +"]";
+  }
+
   public static void main (String[] args) {
     /*
     System.out.println (biggest (new int [] {1,2,4,6,31,5,2}));
@@ -85,6 +93,30 @@ public class Radix {
     System.out.println (biggest (new int [] {1000000,1,4,2}));
     System.out.println (biggest (new int [] {-1111,2,4,23,100,41,1111}));
     */
-    System.out.println ("Ones Digit of 1239012 = " + (1239012/1%10));
+    int[] test1 = {36,19,7,18,21,3,8,12};
+    System.out.println ("Was\n" + toString (test1));
+    radixsort (test1);
+    System.out.println ("After\n" + toString (test1));
+
+    System.out.println ("--------------------------------------------------------------------");
+
+    int[] test2 = {-100,24,67,29,690,44,3,8,5,11};
+    System.out.println ("Was\n" + toString (test2));
+    radixsort (test2);
+    System.out.println ("After\n" + toString (test2));
+
+    System.out.println ("--------------------------------------------------------------------");
+
+    int[] test3 = {-23,-67,-45,-2,0,12,17,5,31};
+    System.out.println ("Was\n" + toString (test3));
+    radixsort (test3);
+    System.out.println ("After\n" + toString (test3));
+
+    System.out.println ("--------------------------------------------------------------------");
+
+    int[] test4 = {-1,-12,71,-16,-14,-10,2,8,4};
+    System.out.println ("Was\n" + toString (test4));
+    radixsort (test4);
+    System.out.println ("After\n" + toString (test4));
   }
 }
