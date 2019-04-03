@@ -118,5 +118,20 @@ public class Radix {
     System.out.println ("Was\n" + toString (test4));
     radixsort (test4);
     System.out.println ("After\n" + toString (test4));
+
+    System.out.println ("--------------------------------------------------------------------");
+
+    int[] test5 = {999,23,450,131,-18,202,1};
+    System.out.println ("Was\n" + toString (test5));
+    radixsort (test5);
+    System.out.println ("After\n" + toString (test5));
+
+    System.out.println ("--------------------------------------------------------------------");
+
+    int[] test6 = {999,23,-450,-131,-18,202,1};
+    System.out.println ("Was\n" + toString (test6));
+    radixsort (test6);
+    System.out.println ("After\n" + toString (test6));
+
   }
 }
