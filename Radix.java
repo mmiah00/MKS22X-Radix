@@ -4,20 +4,40 @@ public class Radix {
   public static void radixsort(int[]data){
     int i = 0;
     int passes = biggest (data);
+    //set up buckets
     MyLinkedList<Integer>[] buckets = new MyLinkedList [20];
-    MyLinkedList<Integer> ans = new MyLinkedList <> ();
-    //MyLinkedList<Integer> temp = convert (data);
+    for (int x = 0; x < buckets.length; x++) {
+      buckets[x] = new MyLinkedList();
+    }
+
+    MyLinkedList<Integer> ans = new MyLinkedList ();
+
     while (i < passes) {
       int place = (int) Math.pow (10,i);
       //put numbers in buckets
-      for (int x = 0; x < data.length; x ++) {
-        if (data[x] >= 0) {
-          int digit = data[x] / place % 10;
-          buckets[digit + 10].add (data[x]);
+      if (i == 0) {
+        for (int x = 0; x < data.length; x ++) {
+          if (data[x] > 0) {
+            int digit = data[x] / place % 10;
+            buckets[digit + 10].add (data[x]);
+          }
+          else {
+            int digit = (Math.abs (data[x])) / place % 10;
+            buckets[9-digit].add (data[x]);
+          }
         }
-        else {
-          int digit = (Math.abs (data[x])) / place % 10;
-          buckets[9-digit].add (data[x]);
+      }
+      else {
+        for (int x = 0; x < data.length; x ++) {
+          int rn = ans.removeFront ();
+          if (rn > 0) {
+            int digit = rn/place% 10;
+            buckets[digit + 10].add (rn);
+          }
+          else {
+            int digit = (Math.abs (rn)) / place % 10;
+            buckets[9 - digit].add (rn);
+          }
         }
       }
 
@@ -25,13 +45,19 @@ public class Radix {
       for (int x = 0; x < buckets.length; x ++) {
         ans.extend (buckets[x]);
       }
-      
-
       i ++;
+    }
+
+    //after finished with passes, put back into the data
+    int t = 0;
+    while (t < data.length) {
+      data[t] = ans.removeFront ();
+      t ++;
     }
   }
 
 
+  /*
   @SuppressWarnings("unchecked")
   private static MyLinkedList <Integer> convert (int[] data) {
     MyLinkedList<Integer> ans = new MyLinkedList ();
@@ -40,6 +66,7 @@ public class Radix {
     }
     return ans;
   }
+  */
 
   private static int biggest (int[] data) { //look through list to find how many digits in the number with greatest magnitude
     int m = data[0];
