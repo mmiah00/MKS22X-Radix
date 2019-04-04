@@ -11,6 +11,10 @@ public class MyLinkedList <E> {
     end = null;
   }
 
+  public Node start  () {
+    return start; 
+  }
+
   public void clear() {
     size = 0;
     start.setNext(end);
